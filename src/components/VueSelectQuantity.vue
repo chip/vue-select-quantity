@@ -1,7 +1,5 @@
 <template>
   <select @change="$emit('vue-select-quantity:change', $event.target.value)">
-    <option value="0">0 (zzooo)</option>
-    <option value="0">0 (foobar)</option>
     <option value="0">0 (Delete)</option>
     <option value="1">1</option>
     <option value="2">2</option>
