@@ -14,13 +14,16 @@
       >Vue 2 Documentation</a>
     </p>
 
-    <button @click="count++">count is: {{ count }}</button>
     <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test hot module replacement.
+      Edit these components to test hot module replacement:
+
+      <ul>
+        <li><code>components/Demo.vue</code></li>
+        <li><code>components/VueSelectQuantity.vue</code></li>
+      </ul>
     </p>
 
-    VueSelectQuantity:
+    <h2>VueSelectQuantity component:</h2>
     <VueSelectQuantity
       @vue-select-quantity:change="() => change('change detected')"
     />
@@ -32,16 +35,10 @@ import VueSelectQuantity from './VueSelectQuantity.vue'
 
 export default {
   components: {
-    // HelloWorld,
     VueSelectQuantity
   },
   props: {
     msg: String,
-  },
-  data() {
-    return {
-      count: 0,
-    };
   },
   methods: {
     change (msg) {
