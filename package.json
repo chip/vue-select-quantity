@@ -1,14 +1,26 @@
 {
-  "name": "vue2-vite",
+  "name": "vue-select-quantity",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-select-quantity.umd.js",
+  "module": "./dist/vue-select-quantity.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-select-quantity.es.js",
+      "require": "./dist/vue-select-quantity.umd.js"
+    }
+  },
   "version": "0.0.0",
+  "private": "true",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "vue": "^2.6.12",
-    "vue-template-compiler": "^2.7.14"
+    "vue": "2.6.12",
+    "vue-template-compiler": "2.6.12"
   },
   "devDependencies": {
     "vite": "^2.0.5",
