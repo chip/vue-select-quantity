@@ -20,14 +20,16 @@
       <code>components/HelloWorld.vue</code> to test hot module replacement.
     </p>
 
-    vsqs <VueSelectQuantity @vue-select-quantity:change="() => foo('hi')" />
+    VueSelectQuantity:
+    <VueSelectQuantity
+      @vue-select-quantity:change="() => change('change detected')"
+    />
   </div>
 </template>
 
 <script>
-// import HelloWorld from './HelloWorld.vue'
 import VueSelectQuantity from './VueSelectQuantity.vue'
-// import VueSelectQuantity from 'vue-select-quantity'
+
 export default {
   components: {
     // HelloWorld,
@@ -42,8 +44,8 @@ export default {
     };
   },
   methods: {
-    foo () {
-      console.log('foo')
+    change (msg) {
+      console.log(msg)
     }
   }
 };
