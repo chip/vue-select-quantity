@@ -4,15 +4,16 @@
       alt="Vue logo"
       src="./assets/logo.png"
     />
-    <HelloWorld msg="Hello Vue 2 + Vite" />
+    <Demo msg="Hello Vue 2 + Vite" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Demo from "./components/Demo.vue";
+
 export default {
   components: {
-    HelloWorld,
+    Demo,
   },
 };
 </script>
