@@ -37,9 +37,6 @@ export default {
   components: {
     VueSelectQuantity
   },
-  props: {
-    msg: String,
-  },
   methods: {
     change (msg) {
       console.log(msg)

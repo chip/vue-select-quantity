@@ -4,7 +4,7 @@
       alt="Vue logo"
       src="./assets/logo.png"
     />
-    <Demo msg="Hello Vue 2 + Vite" />
+    <Demo />
   </div>
 </template>
 
