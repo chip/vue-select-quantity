@@ -10,9 +10,24 @@
       to test hot module replacement
     </p>
 
-    <VueSelectQuantity
-      @vue-select-quantity:change="() => change('change detected')"
-    />
+    <div class="center">
+      <div>
+        <div class="box">
+          <p class="description">Using an unordered list tag: </p>
+        </div>
+        <div class="box">
+          <VueSelectQuantity @vue-select-quantity:change="handleChange('list component')" />
+        </div>
+      </div>
+      <div>
+        <div class="box">
+          <p class="description">Using a select tag: </p>
+        </div>
+        <div class="box">
+          <VueSelectQuantity @vue-select-quantity:change="handleChange('select component')" display="select" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,7 +39,7 @@ export default {
     VueSelectQuantity
   },
   methods: {
-    change (msg) {
+    handleChange (msg) {
       console.log('Demo.vue change msg', msg)
     }
   }
@@ -34,5 +49,15 @@ export default {
 <style scoped>
 a {
   color: #42b983;
+}
+
+.description {
+  font-weight: 500;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
