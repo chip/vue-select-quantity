@@ -10,18 +10,18 @@
         <p class="description">Using an unordered list tag: </p>
       </div>
       <div class="box">
-        <ul v-if="showList" ref="list" @click="showList = false">
-          <li :class="quantity === 0 ? 'selected' : ''">0 (Delete)</li>
-          <li :class="quantity === 1 ? 'selected' : ''">1</li>
-          <li :class="quantity === 2 ? 'selected' : ''">2</li>
-          <li :class="quantity === 3 ? 'selected' : ''">3</li>
-          <li :class="quantity === 4 ? 'selected' : ''">4</li>
-          <li :class="quantity === 5 ? 'selected' : ''">5</li>
-          <li :class="quantity === 6 ? 'selected' : ''">6</li>
-          <li :class="quantity === 7 ? 'selected' : ''">7</li>
-          <li :class="quantity === 8 ? 'selected' : ''">8</li>
-          <li :class="quantity === 9 ? 'selected' : ''">9</li>
-          <li :class="quantity === 10 ? 'selected' : ''">10+</li>
+        <ul v-if="showList" ref="list" @click="handleListSelection($event.target)">
+          <li :class="quantity === 0 ?  'selected' : ''" id="li-0">0 (Delete)</li>
+          <li :class="quantity === 1 ?  'selected' : ''" id="li-1">1</li>
+          <li :class="quantity === 2 ?  'selected' : ''" id="li-2">2</li>
+          <li :class="quantity === 3 ?  'selected' : ''" id="li-3">3</li>
+          <li :class="quantity === 4 ?  'selected' : ''" id="li-4">4</li>
+          <li :class="quantity === 5 ?  'selected' : ''" id="li-5">5</li>
+          <li :class="quantity === 6 ?  'selected' : ''" id="li-6">6</li>
+          <li :class="quantity === 7 ?  'selected' : ''" id="li-7">7</li>
+          <li :class="quantity === 8 ?  'selected' : ''" id="li-8">8</li>
+          <li :class="quantity === 9 ?  'selected' : ''" id="li-9">9</li>
+          <li :class="quantity === 10 ? 'selected' : ''" id="li-10">10+</li>
         </ul>
         <ul v-if="!showList">
           <li @click="showList = true">Qty: {{ quantity }}</li>
@@ -34,7 +34,7 @@
       <div class="box">
         <select
           v-model="quantity"
-          @change="handleChange($event.target.value)"
+          @change="handleSelectChange($event.target.value)"
           class="custom-select"
         >
           <option disabled value="">Please select quantity</option>
@@ -74,8 +74,12 @@ export default {
       console.log('handleSubmit', this.quantity)
       this.$emit("vue-select-quantity:update", this.quantity)
     },
-    handleChange (value) {
-      console.log('handleChange', value)
+    handleListSelection (target) {
+      this.quantity = parseInt(target.id.replace(/li-/, ''))
+      this.showList = false
+    },
+    handleSelectChange (value) {
+      console.log('handleSelectChange', value)
       if (value === "0") {
         console.log('got zero')
         this.$emit("vue-select-quantity:delete")
@@ -133,7 +137,12 @@ export default {
   font-weight: 500;
 }
 
-#list-item-10  {
+#li-9:hover  {
+  border-bottom: 1px solid rgb(238, 240, 240);
+  background-color: rgb(238, 240, 240);
+}
+
+#li-10  {
   border-top: 1px solid rgb(208, 211, 212);
 }
 
@@ -149,11 +158,13 @@ ul {
   border-right: 1px solid rgb(208, 211, 212);
   border-bottom: 1px solid rgb(208, 211, 212);
   border-left: 1px solid rgb(208, 211, 212);
-  background-color: #f0f0f0;
-  border-radius: 1px;
+  background-color: white;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  padding: 1px 0;
   color: #000;
   width: 6em;
-  padding: 0px;
 }
 
 ul li {
@@ -169,17 +180,36 @@ ul li {
   text-align: left;
 }
 
+ul li:first-child {
+  margin-top: 5px;
+}
+
+ul li:last-child {
+  margin-bottom: 5px;
+}
+
 ul li:hover {
-  /* border: 1px solid rgb(208, 211, 212); */
   border-top: 1px solid rgb(208, 211, 212);
-  border-right: 1px solid rgb(208, 211, 212);
+  border-right: 1px solid rgb(238, 240, 240);
   border-bottom: 1px solid rgb(208, 211, 212);
-  border-left: 1px solid rgb(208, 211, 212);
+  border-left: 1px solid rgb(238, 240, 240);
   background-color: rgb(238, 240, 240);
+}
+
+ul li:first-child:hover {
+  border-top: 1px solid rgb(208, 211, 212);
+}
+
+ul li:last-child:hover {
+  border-bottom: 1px solid rgb(208, 211, 212);
 }
 
 ul li.selected {
   border: 1px solid rgb(61, 163, 165);
   background-color: rgb(236, 252, 255);
+}
+
+ul li.selected:hover {
+  background-color: rgb(238, 240, 240);
 }
 </style>
