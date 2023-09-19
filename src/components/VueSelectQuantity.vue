@@ -1,16 +1,11 @@
 <template>
   <div class="center">
-    <div v-if="showInput">
-      <input type="number" v-model="quantity" />
-      <button type="button" @click="handleSubmit">Update</button>
-      &nbsp; <a href="#" @click="handleCancel">Cancel</a>
-    </div>
-    <div v-else>
+    <div class="list-container">
       <div class="box">
         <p class="description">Using an unordered list tag: </p>
       </div>
       <div class="box">
-        <ul v-if="showList" ref="list" @click="handleListSelection($event.target)">
+        <ul v-if="showList" @click="handleListSelection($event.target)">
           <li :class="quantity === 0 ?  'selected' : ''" id="li-0">0 (Delete)</li>
           <li :class="quantity === 1 ?  'selected' : ''" id="li-1">1</li>
           <li :class="quantity === 2 ?  'selected' : ''" id="li-2">2</li>
@@ -23,33 +18,42 @@
           <li :class="quantity === 9 ?  'selected' : ''" id="li-9">9</li>
           <li :class="quantity === 10 ? 'selected' : ''" id="li-10">10+</li>
         </ul>
-        <ul v-if="!showList">
+        <ul v-else>
           <li @click="showList = true">Qty: {{ quantity }}</li>
         </ul>
       </div>
-
+    </div>
+    <div class="select-container">
       <div class="box">
         <p class="description">Using a select tag: </p>
       </div>
       <div class="box">
-        <select
-          v-model="quantity"
-          @change="handleSelectChange($event.target.value)"
-          class="custom-select"
-        >
-          <option disabled value="">Please select quantity</option>
-          <option value="0">0 (Delete)</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10+">10+</option>
-        </select>
+        <div v-if="showInput">
+          <!-- quantity: {{ quantity }} -->
+          <input type="text" v-model="quantity" value="this.quantity" defaultValue="0" size="5" class="vsc-text-input" />
+          <button type="button" class="vsc-button" @click="handleSubmit">Update</button>
+          &nbsp; <a href="#" @click="handleCancel">Cancel</a>
+        </div>
+        <div v-else>
+          <select
+            v-model="quantity"
+            @change="handleSelectChange($event.target.value)"
+            class="custom-select"
+          >
+            <option disabled value="">Please select quantity</option>
+            <option value="0">0 (Delete)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10+</option>
+          </select>
+        </div>
       </div>
     </div>
   </div>
@@ -72,19 +76,22 @@ export default {
     },
     handleSubmit () {
       console.log('handleSubmit', this.quantity)
+      // TODO should input be called quantity?
       this.$emit("vue-select-quantity:update", this.quantity)
     },
     handleListSelection (target) {
+      console.log('handleListSelection', target)
       this.quantity = parseInt(target.id.replace(/li-/, ''))
       this.showList = false
     },
     handleSelectChange (value) {
       console.log('handleSelectChange', value)
+      console.log('handleSelectChange quantity', this.quantity)
       if (value === "0") {
         console.log('got zero')
         this.$emit("vue-select-quantity:delete")
-      } else if (value === "10+") {
-        console.log('got 10+')
+      } else if (value === "10") {
+        console.log('got 10')
         this.showInput = true
       } else {
         console.log('got else')
@@ -95,44 +102,75 @@ export default {
 }
 </script>
 
-  <!-- .custom-select { -->
-  <!--   position: relative; -->
-  <!--   display: inline-block; -->
-  <!-- } -->
-  <!---->
-  <!-- .custom-select select { -->
-  <!--   appearance: none; -->
-  <!--   padding: 10px; -->
-  <!--   font-size: 16px; -->
-  <!--   border: 1px solid #ccc; -->
-  <!--   border-radius: 5px; -->
-  <!--   background-color: transparent; -->
-  <!--   color: #333; -->
-  <!--   width: 100px; -->
-  <!--   cursor: pointer; -->
-  <!-- } -->
-  <!---->
-  <!-- .custom-select::after { -->
-  <!--   content: '\25BC'; -->
-  <!--   position: absolute; -->
-  <!--   top: 50%; -->
-  <!--   right: 10px; -->
-  <!--   transform: translateY(-50%); -->
-  <!--   pointer-events: none; -->
-  <!-- } -->
-  <!---->
-  <!-- .custom-select select option { -->
-  <!--   background-color: #fff; -->
-  <!--   color: #333; -->
-  <!--   border: 1px solid #ccc; -->
-  <!--   padding: 5px; -->
-  <!-- } -->
-  <!---->
-  <!-- .custom-select select option:hover { -->
-  <!--   background-color: #f0f0f0; -->
-  <!-- } -->
+<!-- <style scoped> -->
+<!--   .custom-select { -->
+<!--     position: relative; -->
+<!--     display: inline-block; -->
+<!--   } -->
+<!---->
+<!--   .custom-select select { -->
+<!--     appearance: none; -->
+<!--     padding: 10px; -->
+<!--     font-size: 16px; -->
+<!--     border: 1px solid #ccc; -->
+<!--     border-radius: 5px; -->
+<!--     background-color: transparent; -->
+<!--     color: #333; -->
+<!--     width: 100px; -->
+<!--     cursor: pointer; -->
+<!--   } -->
+<!---->
+<!--   .custom-select::after { -->
+<!--     content: '\25BC'; -->
+<!--     position: absolute; -->
+<!--     top: 50%; -->
+<!--     right: 10px; -->
+<!--     transform: translateY(-50%); -->
+<!--     pointer-events: none; -->
+<!--   } -->
+<!---->
+<!--   .custom-select select option { -->
+<!--     background-color: #fff; -->
+<!--     color: #333; -->
+<!--     border: 1px solid #ccc; -->
+<!--     padding: 5px; -->
+<!--   } -->
+<!---->
+<!--   .custom-select select option:hover { -->
+<!--     background-color: #f0f0f0; -->
+<!--   } -->
+<!---->
 
 <style scoped>
+.vsc-text-input {
+  height: 2em;
+  border: 0.12em solid rgb(208, 211, 211);
+  border-radius: 6px;
+  transition: 200ms box-shadow ease-in-out;
+  padding-left: 8px;
+}
+
+.vsc-text-input:focus {
+  outline: 0.36em solid rgb(197, 240, 248);
+  border: 0.12em solid rgb(25, 100, 120);
+  /* box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) + 40%), 0.8); */
+}
+
+.vsc-button {
+  border: 1px solid rgb(245, 196, 48);
+  background-color: rgb(255, 211, 55);
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  font-weight: 300;
+  padding: 6px 4px;
+  margin-left: 6px;
+}
+
+.vsc-button:hover {
+  background-color: rgb(245, 196, 48);
+}
+
 .description {
   font-weight: 500;
 }
@@ -153,7 +191,7 @@ export default {
 }
 
 ul {
-  font-size: 14px;
+  font-size: 1.125em;
   border-top: 1px solid rgb(208, 211, 212);
   border-right: 1px solid rgb(208, 211, 212);
   border-bottom: 1px solid rgb(208, 211, 212);
