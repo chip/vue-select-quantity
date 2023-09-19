@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     change (msg) {
-      console.log(msg)
+      console.log('Demo.vue change msg', msg)
     }
   }
 };
