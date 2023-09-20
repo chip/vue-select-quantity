@@ -9,14 +9,6 @@
 <script>
 export default {
   name: 'InputQuantity',
-  props: {
-    updateMethod: {
-      type: Function
-    },
-    cancelMethod: {
-      type: Function
-    }
-  },
   data () {
     return {
       quantity: 1,
