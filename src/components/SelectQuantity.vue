@@ -5,7 +5,7 @@
   <div v-else>
     <select
       v-model="quantity"
-      @change="handleChange($event.target.value)"
+      @change="$emit('vue-select-quantity:change', $event.target.value)"
       class="custom-select"
     >
       <option disabled value="">Please select quantity</option>
@@ -24,9 +24,6 @@ import InputQuantity from './InputQuantity.vue'
 
 export default {
   name: 'SelectQuantity',
-  props: {
-    handleChange: { type: Function }
-  },
   components: {
     InputQuantity
   },
