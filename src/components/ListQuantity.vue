@@ -48,6 +48,9 @@ export default {
         console.log('qty', qty)
         this.quantity = qty
       }
+      if (this.quantity === 10) {
+        this.showInput = true
+      }
       this.showList = false
     }
   }
