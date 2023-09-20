@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- quantity: {{ quantity }} -->
     <input type="text" v-model="quantity" value="this.quantity" defaultValue="0" size="5" class="vsc-text-input" />
     <button type="button" class="vsc-button" @click="update">Update</button>
     <a href="#" class="vsc-cancel" @click="cancel">Cancel</a>
@@ -9,11 +8,7 @@
 <script>
 export default {
   name: 'InputQuantity',
-  data () {
-    return {
-      quantity: 1,
-    }
-  },
+  props: ['quantity'],
   methods: {
     cancel () {
       console.log('cancel')
@@ -21,7 +16,6 @@ export default {
     },
     update () {
       console.log('update', this.quantity)
-      // TODO should input be called quantity?
       this.$emit("vue-select-quantity:update", this.quantity)
     }
   }
@@ -29,7 +23,6 @@ export default {
 </script>
 <style scoped>
 .vsc-text-input {
-  height: 2em;
   border: 0.12em solid rgb(208, 211, 211);
   border-radius: 6px;
   transition: 200ms box-shadow ease-in-out;
@@ -39,7 +32,6 @@ export default {
 .vsc-text-input:focus {
   outline: 0.36em solid rgb(197, 240, 248);
   border: 0.12em solid rgb(25, 100, 120);
-  /* box-shadow: 0 0 0 3px hsla(var(--input-focus-h), var(--input-focus-s), calc(var(--input-focus-l) + 40%), 0.8); */
 }
 
 .vsc-button {
