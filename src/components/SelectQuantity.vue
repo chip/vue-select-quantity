@@ -6,7 +6,7 @@
     <select
       v-model="quantity"
       @change="$emit('vue-select-quantity:change', $event.target.value)"
-      class="custom-select"
+      :class="cssClass"
     >
       <option disabled value="">Please select quantity</option>
       <option v-for="(n, index) in Array(11).keys()"
@@ -24,13 +24,20 @@ import InputQuantity from './InputQuantity.vue'
 
 export default {
   name: 'SelectQuantity',
+  props: {
+    selectQuantityClass: { type: String, default: 'custom-select' }
+  },
   components: {
     InputQuantity
+  },
+  created () {
+    this.cssClass = this.selectQuantityClass
   },
   data () {
     return {
       quantity: 1,
-      showInput: false
+      showInput: false,
+      cssClass: null
     }
   }
 }
