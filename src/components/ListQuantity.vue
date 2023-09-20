@@ -39,15 +39,10 @@ export default {
   },
   methods: {
     handleListSelection (target) {
-      console.log('handleListSelection', target)
       if (target) {
-        console.log('target', target)
         let attr = target.getAttribute('data-qty')
         if (attr) {
-          console.log('attr', attr)
-          let qty = parseInt(attr)
-          console.log('qty', qty)
-          this.quantity = qty
+          this.quantity = parseInt(attr)
         }
       }
       if (this.quantity === 10) {
