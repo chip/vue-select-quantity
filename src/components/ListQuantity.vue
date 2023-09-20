@@ -9,7 +9,7 @@
           v-for="(n, index) in Array(11).keys()"
           :key="index"
           :data-qty="n"
-          :class="[quantity === n ? 'selected' : '', n === 9 ? 'li-9' : '', n === 10 ? 'li-10' : '']">
+          :class="cssClass(n)">
           <span v-if="n === 0">{{n}} (Delete)</span>
           <span v-else>{{ n !== 10 ? n : `${n}+` }}</span>
         </li>
@@ -50,6 +50,16 @@ export default {
       }
       this.showList = false
     }
+  },
+  cssClass (n) {
+    classes = []
+    if (quantity === n) {
+      classes.push('selected')
+    }
+    if (n === 9 || n === 10) {
+      classes.push(n === 9 ? 'li-9' : 'li-10')
+    }
+    return classes
   }
 }
 </script>
