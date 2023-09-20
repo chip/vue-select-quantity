@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="quantity" value="this.quantity" defaultValue="0" size="5" class="vsc-text-input" />
+    <input type="text" v-model="quantity" size="5" class="vsc-text-input" />
     <button type="button" class="vsc-button" @click="update">Update</button>
     <a href="#" class="vsc-cancel" @click="cancel">Cancel</a>
   </div>
@@ -8,7 +8,19 @@
 <script>
 export default {
   name: 'InputQuantity',
-  props: ['quantity'],
+  props: {
+    value: { type: Number, default: 0 }
+  },
+  created () {
+    if (this.value) {
+      this.quantity = this.value
+    }
+  },
+  data () {
+    return {
+      quantity: 0
+    }
+  },
   methods: {
     cancel () {
       console.log('cancel')

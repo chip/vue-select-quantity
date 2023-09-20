@@ -1,6 +1,6 @@
 <template>
   <div v-if="showInput">
-    <InputQuantity @vue-select-quantity:cancel="showInput = false" />
+    <InputQuantity @vue-select-quantity:cancel="showInput = false" :value="quantity" />
   </div>
   <div v-else>
     <select
