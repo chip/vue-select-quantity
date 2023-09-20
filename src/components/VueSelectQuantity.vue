@@ -1,9 +1,9 @@
 <template>
   <div v-if="display === 'list'">
-    <ListQuantity :handleChange="handleChange" />
+    <ListQuantity @vue-select-quantity:change="change" />
   </div>
   <div v-else>
-    <SelectQuantity :handleChange="handleChange" />
+    <SelectQuantity @vue-select-quantity:change="change" />
   </div>
 </template>
 <script>
