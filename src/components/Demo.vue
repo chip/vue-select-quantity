@@ -4,10 +4,7 @@
     <h1>VueSelectQuantity - component for vue 2</h1>
 
     <p align="center">
-      Edit
-      <code>components/Demo.vue</code> or
-      <code>components/VueSelectQuantity.vue</code>
-      to test hot module replacement
+      Edit <code>components/Demo.vue</code> to test hot module replacement
     </p>
 
     <div class="center">
