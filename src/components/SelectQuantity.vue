@@ -33,7 +33,7 @@ export default {
   data () {
     return {
       quantity: 1,
-      showInput: true
+      showInput: false
     }
   }
 }
