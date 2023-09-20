@@ -43,10 +43,12 @@ export default {
       if (target) {
         console.log('target', target)
         let attr = target.getAttribute('data-qty')
-        console.log('attr', attr)
-        let qty = parseInt(attr)
-        console.log('qty', qty)
-        this.quantity = qty
+        if (attr) {
+          console.log('attr', attr)
+          let qty = parseInt(attr)
+          console.log('qty', qty)
+          this.quantity = qty
+        }
       }
       if (this.quantity === 10) {
         this.showInput = true
