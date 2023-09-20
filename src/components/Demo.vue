@@ -13,7 +13,11 @@
           <p class="description">Using an unordered list tag: </p>
         </div>
         <div class="box">
-          <VueSelectQuantity @vue-select-quantity:change="handleChange('list component')" />
+          <VueSelectQuantity
+            @vue-select-quantity:change="() => console.log('list component recd vue-select-quantity:change event')"
+            @vue-select-quantity:update="() => console.log('list component recd vue-select-quantity:update event')"
+            @vue-select-quantity:delete="() => console.log('list component recd vue-select-quantity:delete event')"
+          />
         </div>
       </div>
       <div>
@@ -21,7 +25,12 @@
           <p class="description">Using a select tag: </p>
         </div>
         <div class="box">
-          <VueSelectQuantity @vue-select-quantity:change="handleChange('select component')" display="select" />
+          <VueSelectQuantity
+            display="select"
+            @vue-select-quantity:change="() => console.log('select component recd vue-select-quantity:change event')"
+            @vue-select-quantity:update="() => console.log('select component recd vue-select-quantity:update event')"
+            @vue-select-quantity:delete="() => console.log('select component recd vue-select-quantity:delete event')"
+          />
         </div>
       </div>
     </div>
@@ -34,11 +43,6 @@ import VueSelectQuantity from './VueSelectQuantity.vue'
 export default {
   components: {
     VueSelectQuantity
-  },
-  methods: {
-    handleChange (msg) {
-      console.log('Demo.vue change msg', msg)
-    }
   }
 };
 </script>
