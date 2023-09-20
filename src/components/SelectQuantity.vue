@@ -11,7 +11,7 @@
       <option disabled value="">Please select quantity</option>
       <option v-for="(n, index) in Array(11).keys()"
         :key="index"
-        :data-qty="n"
+        :value="n"
       >
         <span v-if="n === 0">{{n}} (Delete)</span>
         <span v-else>{{ n !== 10 ? n : `${n}+` }}</span>
