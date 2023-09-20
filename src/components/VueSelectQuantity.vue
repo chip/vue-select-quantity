@@ -27,17 +27,16 @@ export default {
     }
   },
   methods: {
-    handleChange (value) {
-      console.log('handleSelectChange', value)
-      console.log('handleSelectChange quantity', this.quantity)
+    change (value) {
+      console.log('change value', value, 'change quantity', this.quantity)
       if (value === "0") {
-        console.log('got zero')
+        console.log('this.$emit("vue-select-quantity:delete")')
         this.$emit("vue-select-quantity:delete")
       } else if (value === "10") {
-        console.log('got 10')
+        console.log('value === 10 => showInput')
         this.showInput = true
       } else {
-        console.log('got else')
+        console.log('this.$emit("vue-select-quantity:update")', this.quantity)
         this.$emit("vue-select-quantity:update", this.quantity)
       }
     }
