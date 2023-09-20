@@ -3,22 +3,23 @@
     <InputQuantity @vue-select-quantity:cancel="showInput = false" />
   </div>
   <div v-else>
-    <ul v-if="showList" @click="handleListSelection($event.target)">
-      <li :class="quantity === 0 ?  'selected' : ''" id="li-0">0 (Delete)</li>
-      <li :class="quantity === 1 ?  'selected' : ''" id="li-1">1</li>
-      <li :class="quantity === 2 ?  'selected' : ''" id="li-2">2</li>
-      <li :class="quantity === 3 ?  'selected' : ''" id="li-3">3</li>
-      <li :class="quantity === 4 ?  'selected' : ''" id="li-4">4</li>
-      <li :class="quantity === 5 ?  'selected' : ''" id="li-5">5</li>
-      <li :class="quantity === 6 ?  'selected' : ''" id="li-6">6</li>
-      <li :class="quantity === 7 ?  'selected' : ''" id="li-7">7</li>
-      <li :class="quantity === 8 ?  'selected' : ''" id="li-8">8</li>
-      <li :class="quantity === 9 ?  'selected' : ''" id="li-9">9</li>
-      <li :class="quantity === 10 ? 'selected' : ''" id="li-10">10+</li>
-    </ul>
-    <ul v-else>
-      <li @click="showList = true">Qty: {{ quantity }}</li>
-    </ul>
+    <div v-if="showList">
+      <ul @click="handleListSelection($event.target)">
+        <li
+          v-for="(n, index) in Array(11).keys()"
+          :key="index"
+          :data-qty="n"
+          :class="[quantity === n ? 'selected' : '', n === 9 ? 'li-9' : '', n === 10 ? 'li-10' : '']">
+          <span v-if="n === 0">{{n}} (Delete)</span>
+          <span v-else>{{ n !== 10 ? n : `${n}+` }}</span>
+        </li>
+      </ul>
+    </div>
+    <div v-else>
+      <ul>
+        <li @click="showList = true">Qty: {{ quantity }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -39,7 +40,14 @@ export default {
   methods: {
     handleListSelection (target) {
       console.log('handleListSelection', target)
-      this.quantity = parseInt(target.id.replace(/li-/, ''))
+      if (target) {
+        console.log('target', target)
+        let attr = target.getAttribute('data-qty')
+        console.log('attr', attr)
+        let qty = parseInt(attr)
+        console.log('qty', qty)
+        this.quantity = qty
+      }
       this.showList = false
     }
   }
@@ -107,12 +115,12 @@ ul li.selected:hover {
   background-color: rgb(238, 240, 240);
 }
 
-#li-9:hover  {
+.li-9:hover  {
   border-bottom: 1px solid rgb(238, 240, 240);
   background-color: rgb(238, 240, 240);
 }
 
-#li-10  {
+.li-10  {
   border-top: 1px solid rgb(208, 211, 212);
 }
 
