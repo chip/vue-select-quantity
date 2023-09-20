@@ -38,7 +38,7 @@ export default {
     }
   },
   methods: {
-    handleListSelection (target) {
+    handleListSelection: function (target) {
       if (target) {
         let attr = target.getAttribute('data-qty')
         if (attr) {
@@ -51,9 +51,9 @@ export default {
       this.showList = false
     }
   },
-  cssClass (n) {
+  cssClass: function (n) {
     classes = []
-    if (quantity === n) {
+    if (this.quantity === n) {
       classes.push('selected')
     }
     if (n === 9 || n === 10) {
