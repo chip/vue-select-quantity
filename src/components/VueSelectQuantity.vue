@@ -1,9 +1,9 @@
 <template>
   <div v-if="display === 'list'">
-    <ListQuantity />
+    <ListQuantity :handleChange="handleChange" />
   </div>
   <div v-else>
-    <SelectQuantity />
+    <SelectQuantity :handleChange="handleChange" />
   </div>
 </template>
 <script>
@@ -24,6 +24,22 @@ export default {
       showInput: false,
       quantity: 1,
       showList: false
+    }
+  },
+  methods: {
+    handleChange (value) {
+      console.log('handleSelectChange', value)
+      console.log('handleSelectChange quantity', this.quantity)
+      if (value === "0") {
+        console.log('got zero')
+        this.$emit("vue-select-quantity:delete")
+      } else if (value === "10") {
+        console.log('got 10')
+        this.showInput = true
+      } else {
+        console.log('got else')
+        this.$emit("vue-select-quantity:update", this.quantity)
+      }
     }
   }
 }
