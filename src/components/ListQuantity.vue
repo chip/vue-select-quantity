@@ -58,7 +58,7 @@ export default {
 </script>
 <style scoped>
 ul {
-  font-size: 1.125em;
+  font-size: 0.8rem;
   border-top: 1px solid rgb(208, 211, 212);
   border-right: 1px solid rgb(208, 211, 212);
   border-bottom: 1px solid rgb(208, 211, 212);
@@ -81,7 +81,7 @@ ul li {
   background-color: white;
   color: #000;
   font-weight: 500;
-  padding: 5px 0 5px 12px;
+  padding: .2rem 0 .2rem 0.8rem;
   text-align: left;
 }
 
