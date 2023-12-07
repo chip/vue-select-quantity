@@ -1,8 +1,13 @@
 <template>
   <div>
-    <input type="text" v-model="quantity" size="5" class="vsc-text-input" />
-    <button type="button" class="vsc-button" @click="update">Update</button>
-    <a href="#" class="vsc-cancel" @click="cancel">Cancel</a>
+    <input
+      :value="quantity"
+      @input.prevent="$emit('vue-select-quantity:input', $event.target.value)"
+      size="5"
+      class="vue-select-quantity-text-input"
+    >
+    <a type="button" class="vue-select-quantity-button" @click="$emit('vue-select-quantity:update', quantity)">Update</a>
+    <a type="button" class="vue-select-quantity-cancel" @click="$emit('vue-select-quantity:cancel')">Cancel</a>
   </div>
 </template>
 <script>
