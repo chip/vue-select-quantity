@@ -1,1 +1,3 @@
-export { default as Demo } from './Demo.vue';
+import VueSelectQuantity from './VueSelectQuantity.vue'
+
+module.exports = { VueSelectQuantity }
