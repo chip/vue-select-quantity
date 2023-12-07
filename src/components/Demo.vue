@@ -1,38 +1,22 @@
 <template>
-  <div>
-
-    <h1>VueSelectQuantity - component for vue 2</h1>
-
-    <p align="center">
-      Edit <code>components/Demo.vue</code> to test hot module replacement
-    </p>
-
-    <div class="center">
-      <div>
-        <div class="box">
-          <p class="description">Using an unordered list tag: </p>
-        </div>
-        <div class="box">
-          <VueSelectQuantity
-            @vue-select-quantity:change="() => console.log('list component recd vue-select-quantity:change event')"
-            @vue-select-quantity:update="() => console.log('list component recd vue-select-quantity:update event')"
-            @vue-select-quantity:delete="() => console.log('list component recd vue-select-quantity:delete event')"
-          />
-        </div>
-      </div>
-      <div>
-        <div class="box">
-          <p class="description">Using a select tag: </p>
-        </div>
-        <div class="box">
-          <VueSelectQuantity
-            display="select"
-            @vue-select-quantity:change="() => console.log('select component recd vue-select-quantity:change event')"
-            @vue-select-quantity:update="() => console.log('select component recd vue-select-quantity:update event')"
-            @vue-select-quantity:delete="() => console.log('select component recd vue-select-quantity:delete event')"
-          />
-        </div>
-      </div>
+  <div class="box">
+    <div>
+      <img
+        alt="Vue logo"
+        src="../assets/logo.png"
+      />
+    </div>
+    <div><h1>VueSelectQuantity - component for vue 2</h1></div>
+    <div>Edit <code>components/Demo.vue</code> to test hot module replacement</div>
+    <div class="description">
+      Using an unordered list tag:
+      <br />
+      type = 'styled' : 'unstyled'
+      <VueSelectQuantity
+        @vue-select-quantity:input="handleEvent(`input event`)"
+        @vue-select-quantity:delete="handleEvent(`delete event`)"
+        @vue-select-quantity:update="handleEvent(`update event`)"
+      />
     </div>
   </div>
 </template>
@@ -43,22 +27,26 @@ import VueSelectQuantity from './VueSelectQuantity.vue'
 export default {
   components: {
     VueSelectQuantity
+  },
+  methods: {
+    handleEvent (msg) {
+      console.log('handleEvent', msg)
+    }
   }
 };
 </script>
 
 <style scoped>
-a {
-  color: #42b983;
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  width: 100%;
 }
 
 .description {
   font-weight: 500;
-}
-
-.box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 </style>
