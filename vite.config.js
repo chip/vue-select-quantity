@@ -1,6 +1,8 @@
 const { createVuePlugin } = require('vite-plugin-vue2');
 const path = require('path');
 const { defineConfig } = require('vite');
+import scss from 'rollup-plugin-scss';
+import copy from 'rollup-plugin-copy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,13 +15,28 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue'],
       output: {
-        // Provide global variables to use in the UMD build
-        // Add external deps here
         globals: {
-          vue: 'Vue',
-        },
-      },
-    },
+          vue: 'Vue'
+        }
+      }
+    }
   },
-  plugins: [createVuePlugin()]
+  plugins: [
+    scss({
+      name: 'vue-select-quantity.min.css',
+      sourceMap: false,
+      outputStyle: 'compressed'
+    }),
+    copy({
+      verbose: true,
+      targets: [
+        {
+          src: 'public/vue-select-quantity.css',
+          dest: 'dist',
+          rename: 'vue-select-quantity.css',
+        }
+      ]
+    }),
+    createVuePlugin()
+  ]
 });
