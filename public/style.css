@@ -32,10 +32,7 @@
 
 .vue-select-quantity ul {
   font-size: 1.2rem;
-  border-top: 1px solid rgb(208, 211, 212);
-  border-right: 1px solid rgb(208, 211, 212);
-  border-bottom: 1px solid rgb(208, 211, 212);
-  border-left: 1px solid rgb(208, 211, 212);
+  border: 1px solid rgb(208, 211, 212);
   background-color: white;
   border-radius: 6px;
   -moz-border-radius: 6px;

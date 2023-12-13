@@ -22,9 +22,11 @@ A simple start for using vue2 with vite, using [underfin's vite-plugin-vue2](htt
 
 # TODO: Add installation instructions for component AND styles
     import { VueSelectQuantity } from 'vue-select-quantity'
-    import 'vue-select-quantity/dist/style.css'
+    import 'vue-select-quantity/dist/style.min.css'
+    app.use(VueSelectQuantity)
 
 # TODO: Provide unminified version of CSS (and JS?)
+    import 'vue-select-quantity/dist/style.css'
 
 # TODO: Add instructions to Demo.vue
 
