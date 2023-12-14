@@ -26,7 +26,7 @@
 
 <script>
 import VueSelectQuantity from './VueSelectQuantity.vue'
-import '../../public/style.css'
+import '../../dist/style.scss'
 
 export default {
   components: {
@@ -45,8 +45,9 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+@import "../../public/colors";
 
-<style scoped>
 .box {
   height: 300px;
   width: 100%;
