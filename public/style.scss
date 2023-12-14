@@ -1,19 +1,17 @@
-
+@import "colors";
 .vue-select-quantity-text-input {
-  border: 0.12em solid rgb(208, 211, 211);
+  border: 0.12em solid $gray;
   border-radius: 6px;
   transition: 200ms box-shadow ease-in-out;
   padding-left: 8px;
 }
-
 .vue-select-quantity-text-input:focus {
-  outline: 0.36em solid rgb(197, 240, 248);
-  border: 0.12em solid rgb(25, 100, 120);
+  outline: 0.36em solid $sky-blue;
+  border: 0.12em solid $dark-blue;
 }
-
 .vue-select-quantity-button {
-  border: 1px solid rgb(245, 196, 48);
-  background-color: rgb(255, 211, 55);
+  border: 1px solid $yellow;
+  background-color: $dark-yellow;
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -21,78 +19,67 @@
   padding: 6px 4px;
   margin-left: 6px;
 }
-
 .vue-select-quantity-button:hover {
-  background-color: rgb(245, 196, 48);
+  background-color: $yellow;
 }
-
 .vue-select-quantity-cancel {
   padding-left: 8px;
 }
-
 .vue-select-quantity ul {
+  box-sizing: border-box;
   font-size: 1.2rem;
-  border: 1px solid rgb(208, 211, 212);
+  border: 1px solid $gray;
   background-color: white;
   border-radius: 6px;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   padding: 1px 0;
-  color: #000;
+  color: black;
   width: 6em;
 }
-
+.vue-select-quantity option,
 .vue-select-quantity li {
   list-style: none;
-  border-top: 1px solid rgb(255, 255, 255);
-  border-right: 1px solid rgb(255, 255, 255);
-  border-bottom: 1px solid rgb(255, 255, 255);
-  border-left: 1px solid rgb(255, 255, 255);
+  border: 1px solid white;
   background-color: white;
-  color: #000;
+  color: black;
   font-weight: 500;
   padding: .2rem 0 .2rem 0.8rem;
   text-align: left;
 }
-
 .vue-select-quantity li:first-child {
   margin-top: 5px;
 }
-
 .vue-select-quantity li:last-child {
   margin-bottom: 5px;
 }
-
+.vue-select-quantity option:hover,
 .vue-select-quantity li:hover {
-  border-top: 1px solid rgb(208, 211, 212);
-  border-right: 1px solid rgb(238, 240, 240);
-  border-bottom: 1px solid rgb(208, 211, 212);
-  border-left: 1px solid rgb(238, 240, 240);
-  background-color: rgb(238, 240, 240);
+  border-top: 1px solid $gray;
+  border-right: 1px solid $light-gray;
+  border-bottom: 1px solid $gray;
+  border-left: 1px solid $light-gray;
+  background-color: $light-gray;
 }
-
 .vue-select-quantity li:first-child:hover {
-  border-top: 1px solid rgb(208, 211, 212);
+  border-top: 1px solid $gray;
 }
-
 .vue-select-quantity li:last-child:hover {
-  border-bottom: 1px solid rgb(208, 211, 212);
+  border-bottom: 1px solid $gray;
 }
-
+.vue-select-quantity option.selected,
 .vue-select-quantity li.selected {
-  border: 1px solid rgb(61, 163, 165);
-  background-color: rgb(236, 252, 255);
+  border: 1px solid $blue-green;
+  background-color: $light-blue;
 }
-
+.vue-select-quantity option.selected:hover,
 .vue-select-quantity li.selected:hover {
-  background-color: rgb(238, 240, 240);
+  background-color: $light-gray;
 }
-
 .vue-select-quantity li.border-bottom-9:hover {
-  border-bottom: 1px solid rgb(238, 240, 240);
-  background-color: rgb(238, 240, 240);
+  border-bottom: 1px solid $light-gray;
+  background-color: $light-gray;
 }
-
 .vue-select-quantity li.border-top-10 {
-  border-top: 1px solid rgb(208, 211, 212);
+  border-top: 1px solid $gray;
 }
