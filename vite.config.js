@@ -19,7 +19,8 @@ export default defineConfig({
           vue: 'Vue'
         }
       }
-    }
+    },
+    watch: true
   },
   plugins: [
     copy({
