@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="vue-select-quantity-container">
     <div v-if="showInput">
       <input
         :value="quantity"
@@ -52,6 +52,8 @@ export default {
   },
   methods: {
     select: function (evt) {
+      this.showList = false
+
       const { target } = evt
       if (target) {
         let attr = target.getAttribute('data-item')
@@ -60,7 +62,6 @@ export default {
         }
       }
       if (this.quantity === 10) {
-        this.showList = false
         this.showInput = true
       } else {
         if (this.quantity === 0) {
@@ -68,8 +69,8 @@ export default {
           if (this.$attrs && this.$attrs['data-id']) {
             id = this.$attrs['data-id']
           }
-          this.$emit('remove:quantity', id, this.quantity)
-          this.showList = false
+          this.$emit('update:quantity', this.quantity)
+          this.$emit('remove:quantity', id)
         } else {
           this.$emit('update:quantity', this.quantity)
         }
