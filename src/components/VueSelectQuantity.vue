@@ -1,5 +1,5 @@
 <template>
-  <form class="vue-select-quantity" tabindex="0">
+  <form class="vue-select-quantity" tabindex="0" @keyup="handleKeyUp">
     <div v-if="showInput">
       <input
         :value="quantity"
@@ -119,6 +119,14 @@ export default {
         return '10+'
       }
       return `${n}`
+    },
+    handleKeyUp: function (event) {
+      console.log(event.key)
+
+      if (event.key === "Escape") {
+        this.showInput = false
+        this.showList = false
+      }
     }
   }
 }
