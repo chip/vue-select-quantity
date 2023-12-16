@@ -61,14 +61,14 @@
   background-color: white;
   color: black;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 .select li {
   padding: .3rem 1.7rem;
   border-top: .1rem solid white;
   border-bottom: .1rem solid white;
-  border-right: .05rem solid $light-gray;
-  border-left: .05rem solid $light-gray;
+  border-right: .05rem solid $gray;
+  border-left: .05rem solid $gray;
 }
 .select li:first-child {
   margin-top: .5rem;

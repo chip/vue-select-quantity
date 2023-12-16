@@ -24,8 +24,8 @@
           </li>
         </ul>
       </div>
-      <div v-else class="___select">
-        <ul>
+      <div v-else class="select">
+        <ul class="optList">
           <li @click="showList = true">Qty: {{ quantity }}</li>
         </ul>
       </div>
@@ -121,8 +121,6 @@ export default {
       return `${n}`
     },
     handleKeyUp: function (event) {
-      console.log(event.key)
-
       if (event.key === "Escape") {
         this.showInput = false
         this.showList = false
