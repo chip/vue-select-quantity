@@ -1,85 +1,112 @@
 @import "colors";
-.vue-select-quantity-text-input {
-  border: 0.12em solid $gray;
-  border-radius: 6px;
-  transition: 200ms box-shadow ease-in-out;
-  padding-left: 8px;
-}
-.vue-select-quantity-text-input:focus {
-  outline: 0.36em solid $sky-blue;
-  border: 0.12em solid $dark-blue;
-}
-.vue-select-quantity-button {
-  border: 1px solid $yellow;
-  background-color: $dark-yellow;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  font-weight: 300;
-  padding: 6px 4px;
-  margin-left: 6px;
-}
-.vue-select-quantity-button:hover {
-  background-color: $yellow;
-}
-.vue-select-quantity-cancel {
-  padding-left: 8px;
-}
-.vue-select-quantity ul {
+.select {
+  position: relative;
+  display: inline-block;
+  /* 1em equals 16px https://nekocalc.com/px-to-em-converter */
+  font-size: 0.625em; /* 0.625 is 10px */
+  // font-family: Verdana, Arial, sans-serif;
+
   box-sizing: border-box;
-  font-size: 1.2rem;
-  border: 1px solid $gray;
-  background-color: white;
-  border-radius: 6px;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
-  padding: 1px 0;
-  color: black;
-  width: 6em;
+
+  // width: 8rem;
+  white-space: nowrap;
+
+  background: #f0f0f0;
+  background: linear-gradient(0deg, #e3e3e3, #fcfcfc 50%, #f0f0f0);
 }
-.vue-select-quantity option,
-.vue-select-quantity li {
+.select:focus {
+  outline-color: transparent;
+  /* This box-shadow property is not exactly required, however it's imperative to ensure
+     active state is visible, especially to keyboard users, that we use it as a default value. */
+  // box-shadow: 0 0 3px 1px #227755;
+  box-shadow: 0 0 3px 1px orange;
+}
+/* The .select selector here helps to make sure we only select
+   element inside our control. */
+.select .optList {
+  /* This will make sure our list of options will be displayed below the value
+     and out of the HTML flow */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2; /* We explicitly said the list of options will always be on top of the down arrow */
+
+  /* this will reset the default style of the ul element */
   list-style: none;
-  border: 1px solid white;
+  margin: 0;
+  padding: 0;
+  // padding: 1px 0;
+
+  box-sizing: border-box;
+
+  /* If the values are smaller than the control, the list of options
+     will be as wide as the control itself */
+  min-width: 100%;
+
+  /* In case the list is too long, its content will overflow vertically
+     (which will add a vertical scrollbar automatically) but never horizontally
+     (because we haven't set a width, the list will adjust its width automatically.
+     If it can't, the content will be truncated) */
+  max-height: 30rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  border: 0.1em solid $gray;
+  border-radius: 0.6em;
+  -moz-border-radius: 0.6em;
+  -webkit-border-radius: 0.6em;
+
+  box-shadow: 0 0.1em 0.2em rgb(0 0 0 / 40%);
+  text-align: left;
   background-color: white;
   color: black;
   font-weight: 500;
-  padding: .2rem 0 .2rem 0.8rem;
-  text-align: left;
+  font-size: 1.2rem;
 }
-.vue-select-quantity li:first-child {
-  margin-top: 5px;
+.select li {
+  padding: .3rem 1.7rem;
+  border-top: .1rem solid white;
+  border-bottom: .1rem solid white;
+  border-right: .05rem solid $light-gray;
+  border-left: .05rem solid $light-gray;
 }
-.vue-select-quantity li:last-child {
-  margin-bottom: 5px;
+.select li:first-child {
+  margin-top: .5rem;
 }
-.vue-select-quantity option:hover,
-.vue-select-quantity li:hover {
-  border-top: 1px solid $gray;
-  border-right: 1px solid $light-gray;
-  border-bottom: 1px solid $gray;
-  border-left: 1px solid $light-gray;
-  background-color: $light-gray;
+.select li:last-child {
+  margin-bottom: .5rem;
+  border-top-color: $gray;
 }
-.vue-select-quantity li:first-child:hover {
-  border-top: 1px solid $gray;
-}
-.vue-select-quantity li:last-child:hover {
-  border-bottom: 1px solid $gray;
-}
-.vue-select-quantity option.selected,
-.vue-select-quantity li.selected {
-  border: 1px solid $blue-green;
+.select li.selected {
+  border-color: $blue-green;
   background-color: $light-blue;
 }
-.vue-select-quantity option.selected:hover,
-.vue-select-quantity li.selected:hover {
+.select li:hover {
   background-color: $light-gray;
 }
-.vue-select-quantity li.border-bottom-9:hover {
-  border-bottom: 1px solid $light-gray;
-  background-color: $light-gray;
+.input {
+  border: .2rem solid $gray;
+  border-radius: .6rem;
+  transition: 200ms box-shadow ease-in-out;
+  padding-left: .8rem;
 }
-.vue-select-quantity li.border-top-10 {
-  border-top: 1px solid $gray;
+.input:focus {
+  outline: .6rem solid $sky-blue;
+  border: .2rem solid $dark-blue;
+}
+.button {
+  border: 1px solid $yellow;
+  background-color: $dark-yellow;
+  border-radius: .6rem;
+  -moz-border-radius: .6rem;
+  -webkit-border-radius: .6rem;
+  font-weight: 300;
+  padding: .6rem .4rem;
+  margin-left: .6rem;
+}
+.button:hover {
+  background-color: $yellow;
+}
+.cancel {
+  padding-left: .8rem;
 }

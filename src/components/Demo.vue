@@ -36,7 +36,8 @@
 
 <script>
 import VueSelectQuantity from './VueSelectQuantity.vue'
-import '../../dist/style.scss'
+// import '../../dist/style.scss'
+import '../../public/style.scss'
 
 export default {
   components: {
@@ -51,6 +52,7 @@ export default {
   methods: {
     remove (evt) {
       console.log('remove', evt)
+       
     }
   }
 };

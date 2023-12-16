@@ -1,37 +1,36 @@
 <template>
-  <div class="vue-select-quantity-container">
+  <form class="vue-select-quantity" tabindex="0">
     <div v-if="showInput">
       <input
         :value="quantity"
         @input.prevent="quantity = $event.target.value"
         size="5"
-        class="vue-select-quantity-text-input"
+        class="input"
       >
-      <a type="button" class="vue-select-quantity-button" @click="update">Update</a>
-      <a type="button" class="vue-select-quantity-cancel" @click="showInput = false">Cancel</a>
+      <a type="button" class="update" @click="update">Update</a>
+      <a type="button" class="cancel" @click="showInput = false">Cancel</a>
     </div>
     <div v-else>
-      <div class="vue-select-quantity">
-        <div v-if="showList">
-          <ul @click="select($event)">
-            <li
-              v-for="(n, index) in Array(11).keys()"
-              :key="index"
-              :data-item="n"
-              :class="css(n)"
-            >
-              {{ label(n) }}
-            </li>
-          </ul>
-        </div>
-        <div v-else>
-          <ul>
-            <li @click="showList = true">Qty: {{ quantity }}</li>
-          </ul>
-        </div>
+      <div v-if="showList" class="select">
+        <ul @click="select($event)" class="optList">
+          <li
+            v-for="option in options"
+            :key="option.key"
+            :data-item="option.key"
+            class="option"
+            :class="quantity === option.key ? 'selected' : ''"
+          >
+            {{ option.label }}
+          </li>
+        </ul>
+      </div>
+      <div v-else class="___select">
+        <ul>
+          <li @click="showList = true">Qty: {{ quantity }}</li>
+        </ul>
       </div>
     </div>
-  </div>
+  </form>
 </template>
 <script>
 
@@ -47,20 +46,49 @@ export default {
     return {
       quantity: this.$props.value,
       showInput: false,
-      showList: false
+      showList: false,
+      options: [
+        { key: 0, label: '0 (Delete)' },
+        { key: 1, label: '1' },
+        { key: 2, label: '2' },
+        { key: 3, label: '3' },
+        { key: 4, label: '4' },
+        { key: 5, label: '5' },
+        { key: 6, label: '6' },
+        { key: 7, label: '7' },
+        { key: 8, label: '8' },
+        { key: 9, label: '9' },
+        { key: 10, label: '10 +' }
+      ]
     }
+  },
+  created () {
+    //     select.addEventListener("focus", (event) => {
+    //     select.addEventListener("blur", (event) => {
+    //     select.addEventListener("keyup", (event) => {
+    //       // deactivate on keyup of `esc`
+    //       if (event.key === "Escape") {
+    //         this.deactivateSelect(select)
+    //       }
+    //     })
+    //   })
+    // })
   },
   methods: {
     select: function (evt) {
+      console.log('select', evt)
       this.showList = false
 
       const { target } = evt
+      console.log('target', target)
       if (target) {
         let attr = target.getAttribute('data-item')
+        console.log('attr', attr)
         if (attr) {
           this.quantity = parseInt(attr)
         }
       }
+      console.log('this.quantity', this.quantity)
       if (this.quantity === 10) {
         this.showInput = true
       } else {
@@ -69,6 +97,7 @@ export default {
           if (this.$attrs && this.$attrs['data-id']) {
             id = this.$attrs['data-id']
           }
+          console.log('id', id)
           this.$emit('update:quantity', this.quantity)
           this.$emit('remove:quantity', id)
         } else {
@@ -79,7 +108,6 @@ export default {
     update: function () {
       if (this.quantity) {
         this.$emit('update:quantity', Number(this.quantity))
-        console.log('update', this.quantity)
         this.showInput = false
         this.showList = false
       }
@@ -91,16 +119,6 @@ export default {
         return '10+'
       }
       return `${n}`
-    },
-    css: function (n) {
-      let classes = []
-      if (this.quantity === n) {
-        classes.push('selected')
-      }
-      if (n === 9 || n === 10) {
-        classes.push(n === 9 ? 'border-bottom-9' : 'border-top-10')
-      }
-      return classes
     }
   }
 }
