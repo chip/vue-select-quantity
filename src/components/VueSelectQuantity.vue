@@ -18,7 +18,7 @@
             :key="option.key"
             :data-item="option.key"
             class="option"
-            :class="quantity === option.key ? 'selected' : ''"
+            :class="itemClass(option)"
           >
             {{ option.label }}
           </li>
@@ -125,6 +125,16 @@ export default {
         this.showInput = false
         this.showList = false
       }
+    },
+    itemClass: function (option) {
+      let selector = []
+      if (option.key === this.quantity) {
+        selector.push('selected')
+      }
+      if (option.key === 10) {
+        selector.push('ten')
+      }
+      return selector
     }
   }
 }
