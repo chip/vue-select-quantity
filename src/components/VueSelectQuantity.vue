@@ -1,5 +1,5 @@
 <template>
-  <form class="vue-select-quantity" tabindex="0" @keyup="handleKeyUp">
+  <form class="vue-select-quantity" tabindex="0" @keyup="handleKeyUp" @blur="showList = false">
     <div v-if="showInput">
       <input
         :value="quantity"
