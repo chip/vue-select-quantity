@@ -12,7 +12,7 @@
     </div>
     <div v-else>
       <div v-if="showList" class="select">
-        <ul @click="select($event)" class="optList">
+        <ul @click="select($event)" class="opt-list">
           <li
             v-for="option in options"
             :key="option.key"
@@ -25,8 +25,8 @@
         </ul>
       </div>
       <div v-else class="select">
-        <ul class="optList">
-          <li @click="showList = true">Qty: {{ quantity }}</li>
+        <ul class="opt-list">
+          <li @click="showList = true">Qty: {{ quantity }} <span class="down-arrow">⌄</span></li>
         </ul>
       </div>
     </div>
