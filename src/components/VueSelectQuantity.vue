@@ -17,7 +17,6 @@
             v-for="option in options"
             :key="option.key"
             :data-item="option.key"
-            class="option"
             :class="itemClass(option)"
           >
             {{ option.label }}
