@@ -1,120 +1,120 @@
 @import "colors";
-.select {
-  position: relative;
-  display: inline-block;
-  /* 1em equals 16px https://nekocalc.com/px-to-em-converter */
-  font-size: 0.625em; /* 0.625 is 10px */
-  // font-family: Helvetica, Arial, sans-serif;
-  box-sizing: border-box;
-  // width: 8rem;
-  white-space: nowrap;
-  background: #f0f0f0;
-  background: linear-gradient(0deg, #e3e3e3, #fcfcfc 50%, #f0f0f0);
-}
-.select:focus {
-  outline-color: transparent;
+.vue-select-quantity {
+  .select {
+    position: relative;
+    display: inline-block;
+    /* 1em equals 16px https://nekocalc.com/px-to-em-converter */
+    font-size: 0.625em; /* 0.625 is 10px */
+    // font-family: Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+    width: 8.0rem;
+    white-space: nowrap;
+    // background: #f0f0f0;
+    background: yellow;
+    // background: linear-gradient(0deg, #e3e3e3, #fcfcfc 50%, #f0f0f0);
+  }
+  .select:focus {
+    // outline-color: transparent;
+    outline-color: orange;
+    /*
+      This box-shadow property is not exactly required, however it's imperative
+      to ensure active state is visible, especially to keyboard users, that we use it as a
+      default value.
+    */
+    // box-shadow: 0 0 3px 1px #227755;
+    box-shadow: 0 0 3px 1px orange;
+  }
   /*
-    This box-shadow property is not exactly required, however it's imperative
-    to ensure active state is visible, especially to keyboard users, that we use it as a
-    default value.
+    The .select selector here helps to make sure we only select element inside
+    our control.
   */
-  // box-shadow: 0 0 3px 1px #227755;
-  box-shadow: 0 0 3px 1px orange;
-}
-/*
-  The .select selector here helps to make sure we only select element inside
-  our control.
-*/
-.select .opt-list {
-  /*
-    This will make sure our list of options will be displayed below the value
-    and out of the HTML flow
-  */
-  position: absolute;
-  top: 100%;
-  right: 0;
-  // top: -2rem;
-  // left: -2rem;
-  z-index: 2; /* We explicitly said the list of options will always be on top of the down arrow */
-  /* this will reset the default style of the ul element */
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  // padding: 1px 0;
-  box-sizing: border-box;
-  /*
-    If the values are smaller than the control, the list of options will be as
-    wide as the control itself
-  */
-  min-width: 100%;
-  /*
-    In case the list is too long, its content will overflow vertically (which
-    will add a vertical scrollbar automatically) but never horizontally
-    (because we haven't set a width, the list will adjust its width
-    automatically. If it can't, the content will be truncated)
-  */
-  max-height: 30rem;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border: 0.1em solid $gray;
-  border-radius: 0.6em;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  box-shadow: 0 0.1em 0.2em rgb(0 0 0 / 40%);
-  text-align: left;
-  background-color: white;
-  color: black;
-  font-weight: 500;
-  font-size: 1rem;
-}
-.select li {
-  padding: .3rem 1.8rem .6rem 1.2rem;
-  border: .1rem solid transparent;
-}
-.select li:first-child {
-  margin-top: .5rem;
-}
-.select li.ten {
-  margin-bottom: .5rem;
-  border-top-color: $gray;
-}
-.select li.selected {
-  border-color: $blue-green;
-  background-color: $light-blue;
-}
-.select li:hover {
-  background-color: $light-gray;
-}
-.input {
-  border: .2rem solid $gray;
-  border-radius: .6rem;
-  transition: 200ms box-shadow ease-in-out;
-  padding-left: .8rem;
-}
-.input:focus {
-  outline: .6rem solid $sky-blue;
-  border: .2rem solid $dark-blue;
-}
-.button {
-  border: 1px solid $yellow;
-  background-color: $dark-yellow;
-  border-radius: .6rem;
-  -moz-border-radius: .6rem;
-  -webkit-border-radius: .6rem;
-  font-weight: 300;
-  padding: .6rem .4rem;
-  margin-left: .6rem;
-}
-.button:hover {
-  background-color: $yellow;
-}
-.cancel {
-  padding-left: .8rem;
-}
-.down-arrow {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  font-size: 1.2rem;
-  font-weight: 800;
+  .select .opt-list {
+    /*
+      This will make sure our list of options will be displayed below the value
+      and out of the HTML flow
+    */
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2; /* We explicitly said the list of options will always be on top of the down arrow */
+    /* this will reset the default style of the ul element */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*
+      If the values are smaller than the control, the list of options will be as
+      wide as the control itself
+    */
+    min-width: 100%;
+    /*
+      In case the list is too long, its content will overflow vertically (which
+      will add a vertical scrollbar automatically) but never horizontally
+      (because we haven't set a width, the list will adjust its width
+      automatically. If it can't, the content will be truncated)
+    */
+    max-height: 30rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 0.1em solid $gray;
+    border-radius: 0.6em;
+    -moz-border-radius: 0.6em;
+    -webkit-border-radius: 0.6em;
+    box-shadow: 0 0.1em 0.2em rgb(0 0 0 / 40%);
+    text-align: left;
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .select .opt-list li {
+    padding: .3rem 1.8rem .6rem 1.2rem;
+    border: .1rem solid transparent;
+  }
+  .select .opt-list li:first-child {
+    margin-top: .5rem;
+  }
+  .select .opt-list li.ten {
+    margin-bottom: .5rem;
+    border-top-color: $gray;
+  }
+  .select li.selected {
+    border-color: $blue-green;
+    background-color: $light-blue;
+  }
+  .select li:hover {
+    background-color: $light-gray;
+  }
+  .input {
+    border: .2rem solid $gray;
+    border-radius: .6rem;
+    transition: 200ms box-shadow ease-in-out;
+    padding-left: .8rem;
+  }
+  .input:focus {
+    outline: .6rem solid $sky-blue;
+    border: .2rem solid $dark-blue;
+  }
+  .button {
+    border: 1px solid $yellow;
+    background-color: $dark-yellow;
+    border-radius: .6rem;
+    -moz-border-radius: .6rem;
+    -webkit-border-radius: .6rem;
+    font-weight: 300;
+    padding: .6rem .4rem;
+    margin-left: .6rem;
+  }
+  .button:hover {
+    background-color: $yellow;
+  }
+  .cancel {
+    padding-left: .8rem;
+  }
+  .down-arrow {
+    position: absolute;
+    top: 0.1rem;
+    right: 1.3rem;
+    font-size: 1.6rem;
+  }
 }
