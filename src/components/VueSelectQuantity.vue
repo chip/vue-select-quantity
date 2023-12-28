@@ -2,51 +2,48 @@
   <form
     class="vue-select-quantity"
     tabindex="0"
-    @keyup="handleKeyUp"
+    @keydown.prevent.stop="handleKeyDown($event)"
   >
-    <div v-if="showInput">
+    <div v-if="showInput" class="input">
       <input
         :value="quantity"
-        @input.prevent="quantity = $event.target.value"
-        size="5"
-        class="input"
+        size="3"
+        class="text"
         tabindex="1"
       >
       <a type="button" class="update" @click="update">Update</a>
       <a type="button" class="cancel" @click="showInput = false">Cancel</a>
     </div>
     <div v-else>
-      <div v-if="showList" class="select" role="listbox">
+      <div class="select" role="listbox">
         <ul
           class="opt-list"
           tabindex="1"
           role="presentation"
         >
-          <li
-            v-for="option in options"
-            :key="option.key"
-            :data-item="option.key"
-            :class="itemClass(option)"
-            :aria-selected="option.key == quantity"
-            role="option"
-            @click="select($event, 'item click')"
-          >
-            {{ option.label }}
-          </li>
-        </ul>
-      </div>
-      <div v-else class="select" role="listbox">
-        <ul
-          class="opt-list highlight"
-          role="presentation"
-        >
-          <li
-            @click="open()"
-            role="option"
-          >
-            Qty: {{ quantity }}
-            <span class="down-arrow">⌄</span>
-          </li>
+          <span v-if="showList">
+            <li
+              v-for="option in options"
+              :key="option.key"
+              :data-item="option.key"
+              :class="itemClass(option)"
+              :aria-selected="option.key == quantity"
+              role="option"
+              @click="select($event)"
+            >
+              {{ option.label }}
+            </li>
+          </span>
+          <span v-else>
+            <li
+              @click="open()"
+              class="option"
+              role="option"
+            >
+              Qty: {{ quantity }}
+              <span class="down-arrow">⌄</span>
+            </li>
+          </span>
         </ul>
       </div>
     </div>
@@ -96,17 +93,23 @@ export default {
         }
       }
     },
-    select: function (evt, label) {
+    select: function (evt) {
+      //console.log(evt)
       this.showList = false
 
       let value = this.getDataItem(evt)
-      if (value) {
+      // console.log('value', value)
+      // console.log('quantity', this.quantity)
+      if (!isNaN(value)) {
         this.quantity = parseInt(value)
       }
+      // console.log('*quantity', this.quantity)
       if (this.quantity === 10) {
+        // console.log('quantity === 10')
         this.showInput = true
       } else {
         if (this.quantity === 0) {
+          // console.log('quantity === 0')
           let id = null
           if (this.$attrs && this.$attrs['data-id']) {
             id = this.$attrs['data-id']
@@ -114,6 +117,7 @@ export default {
           this.$emit('update:quantity', this.quantity)
           this.$emit('remove:quantity', id)
         } else {
+          // console.log('else else', this.quantity)
           this.$emit('update:quantity', this.quantity)
         }
       }
@@ -133,12 +137,6 @@ export default {
       }
       return `${n}`
     },
-    handleKeyUp: function (evt) {
-      if (evt.key === "Escape") {
-        this.showInput = false
-        this.showList = false
-      }
-    },
     itemClass: function (option) {
       let selector = []
       if (option.key === this.quantity) {
@@ -148,6 +146,23 @@ export default {
         selector.push('ten')
       }
       return selector
+    },
+    handleKeyDown: function (evt) {
+      if (!evt.key) {
+        return
+      }
+      if (evt.key === "Escape") {
+        this.showInput = false
+        this.showList = false
+        return
+      }
+      if (evt.key.replace(/\D/g, '') === '') {
+        return
+      }
+      if (evt.target && evt.target.value) {
+        const quantity = evt.target.value + evt.key
+        this.quantity = evt.target.value = quantity
+      }
     }
   }
 }
