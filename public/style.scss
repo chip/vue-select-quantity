@@ -7,12 +7,14 @@
 }
 
 .vue-select-quantity {
-  border: 1px solid green;
+  // border: 1px solid green;
   // max-height: 3rem;
 
   .select {
     position: relative;
-    display: inline-block;
+    top: -2.2rem;
+    // left: 0;
+    // display: inline-block;
     /* 1em equals 16px https://nekocalc.com/px-to-em-converter */
     font-size: 0.625em; /* 0.625 is 10px */
     font-family: Avenir, Helvetic, Arial, sans-serif;
