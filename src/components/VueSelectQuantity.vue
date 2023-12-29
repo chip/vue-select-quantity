@@ -24,7 +24,7 @@
           tabindex="1"
           role="presentation"
         >
-          <span v-if="showList">
+          <span v-if="showMenu">
             <li
               v-for="option in options"
               :key="option.key"
@@ -69,8 +69,8 @@ export default {
   data () {
     return {
       quantity: this.$props.value,
-      showInput: false,
-      showList: false,
+      showInput: true, // false
+      showMenu: false,
       options: [
         { key: 0, label: '0 (Delete)' },
         { key: 1, label: '1' },
@@ -91,7 +91,7 @@ export default {
       this.showList = false
     },
     open: function () {
-      this.showList = true
+      this.showMenu = true
       this.showInput = false
     },
     getDataItem: function (evt) {
@@ -105,7 +105,7 @@ export default {
     },
     select: function (evt) {
       //console.log(evt)
-      this.showList = false
+      this.showMenu = false
 
       let value = this.getDataItem(evt)
       // console.log('value', value)
@@ -136,7 +136,7 @@ export default {
       if (this.quantity) {
         this.$emit('update:quantity', Number(this.quantity))
         this.showInput = false
-        this.showList = false
+        this.showMenu = false
       }
     },
     label: function (n) {
@@ -163,7 +163,7 @@ export default {
       }
       if (evt.key === "Escape") {
         this.showInput = false
-        this.showList = false
+        this.showMenu = false
         return
       }
       if (evt.key.replace(/\D/g, '') === '') {
