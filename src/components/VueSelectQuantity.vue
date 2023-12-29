@@ -6,14 +6,16 @@
     v-click-outside="onClickOutside"
   >
     <div v-if="showInput" class="input">
-      <input
-        :value="quantity"
-        size="3"
-        class="text"
-        tabindex="1"
-      >
-      <a type="button" class="update" @click="update">Update</a>
-      <a type="button" class="cancel" @click="showInput = false">Cancel</a>
+      <div class="input-elements">
+        <input
+          :value="quantity"
+          size="3"
+          class="text"
+          tabindex="1"
+        >
+        <a type="button" class="update" @click="update">Update</a>
+        <a type="button" class="cancel" @click="showInput = false">Cancel</a>
+      </div>
     </div>
     <div v-else>
       <div class="select" role="listbox">

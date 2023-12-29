@@ -116,6 +116,11 @@
         //transition: 200ms box-shadow ease-in-out;
         padding-left: .4rem;
       }
+  .input {
+    & .input-elements {
+      display: flex;
+      align-items: center;
+    }
 
       .text:focus {
         outline: .2rem solid $sky-blue;
