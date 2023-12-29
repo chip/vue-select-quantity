@@ -2,7 +2,7 @@
   <form
     class="vue-select-quantity"
     tabindex="0"
-    @keydown.prevent.stop="handleKeyDown($event)"
+    @keydown.prevent.stop="onKeyDown($event)"
     v-click-outside="onClickOutside"
   >
     <div v-if="showInput" class="input">
@@ -157,7 +157,7 @@ export default {
       }
       return selector
     },
-    handleKeyDown: function (evt) {
+    onKeyDown: function (evt) {
       if (!evt.key) {
         return
       }
