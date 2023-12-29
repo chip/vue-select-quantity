@@ -3,6 +3,7 @@
     class="vue-select-quantity"
     tabindex="0"
     @keydown.prevent.stop="handleKeyDown($event)"
+    v-click-outside="onClickOutside"
   >
     <div v-if="showInput" class="input">
       <input
@@ -50,6 +51,7 @@
   </form>
 </template>
 <script>
+import vClickOutside from "v-click-outside"
 
 export default {
   name: 'VueSelectQuantity',
@@ -58,6 +60,9 @@ export default {
       required: true,
       type: Number
     }
+  },
+  directives: {
+    clickOutside: vClickOutside.directive
   },
   data () {
     return {
@@ -80,6 +85,9 @@ export default {
     }
   },
   methods: {
+    onClickOutside () {
+      this.showList = false
+    },
     open: function () {
       this.showList = true
       this.showInput = false
