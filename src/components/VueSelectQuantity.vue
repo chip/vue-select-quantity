@@ -154,6 +154,12 @@ export default {
       }
       return selector
     },
+    nonNumeric: function (key) {
+      return key.replace(/\D/g, '') === ''
+    },
+    maxLength: function () {
+      return this.quantity.length > 2
+    },
     onClickOutside () {
       this.showMenu = false
     },
@@ -166,7 +172,10 @@ export default {
         this.showMenu = false
         return
       }
-      if (evt.key.replace(/\D/g, '') === '') {
+      if (this.nonNumeric(evt.key)) {
+        return
+      }
+      if (this.maxLength()) {
         return
       }
       if (evt.target && evt.target.value) {
