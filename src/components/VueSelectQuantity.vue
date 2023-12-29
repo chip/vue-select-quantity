@@ -53,7 +53,7 @@
   </form>
 </template>
 <script>
-import vClickOutside from "v-click-outside"
+import vClickOutside from 'v-click-outside'
 
 export default {
   name: 'VueSelectQuantity',
@@ -87,9 +87,6 @@ export default {
     }
   },
   methods: {
-    onClickOutside () {
-      this.showList = false
-    },
     open: function () {
       this.showMenu = true
       this.showInput = false
@@ -156,6 +153,9 @@ export default {
         selector.push('ten')
       }
       return selector
+    },
+    onClickOutside () {
+      this.showMenu = false
     },
     onKeyDown: function (evt) {
       if (!evt.key) {
