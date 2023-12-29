@@ -4,14 +4,15 @@ img.image {
 }
 
 .main {
-  margin-left: 6.5rem;
-  width: 500px;
+  display: grid;
+  justify-items: center;
 
   .container {
     border: .1rem solid $gray;
     display: grid;
-    grid-auto-rows: 30px;
-    grid-template-columns: 1fr 1fr 1fr;
+
+    column-gap: 20px;
+    grid-auto-rows: minmax(30px, auto);
     align-items: center;
     text-align: right;
     background-color: $light-gray;
