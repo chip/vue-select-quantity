@@ -183,9 +183,13 @@ export default {
       if (this.maxLength()) {
         return
       }
-      if (evt.target && evt.target.value) {
+      if (evt.target) {
         const quantity = evt.target.value + evt.key
-        this.quantity = evt.target.value = quantity
+
+        const re = new RegExp(/^[1-9]/)
+        if (quantity.match(re)) {
+          this.quantity = evt.target.value = quantity
+        }
       }
     }
   }
