@@ -172,6 +172,11 @@ export default {
         this.showMenu = false
         return
       }
+      if (evt.key === 'Backspace' && evt.target && evt.target.value && evt.target.value.length >= 1) {
+        const { value } = evt.target
+        this.quantity = value.substring(0, value.length - 1)
+        return
+      }
       if (this.nonNumeric(evt.key)) {
         return
       }
