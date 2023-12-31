@@ -14,7 +14,7 @@
           tabindex="1"
         >
         <a type="button" class="update" @click="update">Update</a>
-        <a type="button" class="cancel" @click="showInput = false">Cancel</a>
+        <a type="button" class="cancel" @click="cancel">Cancel</a>
       </div>
     </div>
     <div v-else>
@@ -135,6 +135,10 @@ export default {
         this.showInput = false
         this.showMenu = false
       }
+    },
+    cancel: function () {
+      this.showInput = false
+      this.quantity = 1
     },
     label: function (n) {
       if (n === 0) {
