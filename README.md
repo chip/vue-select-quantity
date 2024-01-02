@@ -1,33 +1,87 @@
 # VueSelectQuantity component
 
-(original boilerplate from vite-vue2-starter)
+This Vue 2 component was created for easily specifying a quantity, as is the case in a shopping cart.
 
-A simple start for using vue2 with vite, using [underfin's vite-plugin-vue2](https://github.com/underfin/vite-plugin-vue2).
+## DEMO
 
-## Scripts
+[DEMO](https://www.github.com/chip/vue-select-quantity/Demo.vue)
 
-```bash
-  npm run dev # start dev server
-  npm run build # build for production
-  npm run serve # locally preview production build
+## How to install
+
+$```npm install @chipcastle.com/vue-select-quantity```
+
+
+## Quick start
+
+```
+import { VueSelectQuantity } from 'vue-select-quantity'
+import 'vue-select-quantity/dist/vue-select-quantity.min.css'
+// OR if you want to change the styles directly
+// import 'vue-select-quantity/dist/vue-select-quantity.css'
+
+export default {
+  components: {
+    VueSelectQuantity
+  }
+}
 ```
 
-# TODO: Add npm pack to distribution instructions (for me)
-    cd /path/to/vue-select-quantity
-    (edit package.json to bump version number)
-    npm pack
+## Basic Usage
 
-# TODO: Add installation instructions for distributed component package
-    npm install /path/to/vue-select-quantity
+```
+<template>
+  <VueSelectQuantity
+    data-id="id"
+    v-model="quantity"
+    @update:quantity="update($event)"
+    @remove:quantity="remove($event)"
+  />
+</template>
 
-# TODO: Add installation instructions for component AND styles
-    import { VueSelectQuantity } from 'vue-select-quantity'
-    import 'vue-select-quantity/dist/style.min.css'
-    app.use(VueSelectQuantity)
+<script>
+  export default {
+    data () {
+      return {
+        id: '1',
+        quantity: 1
+      }
+    },
+    methods: {
+      update (evt) {
+        console.log('received update:quantity event', evt)
+        this.quantity = evt
+      },
+      remove (evt) {
+        console.log('received remove:quantity event', evt)
+      }
+    }
+  }
+</script>
+```
 
-# TODO: Provide unminified version of CSS (and JS?)
-    import 'vue-select-quantity/dist/style.css'
+## Props
 
-# TODO: Add instructions to Demo.vue
+| Property name | Type | Default | Description |
+| ------------- | ---- | ------- | ----------- |
+| data-id | String | null | A required property to identify the component instance |
+| v-model | Number | null | A required property which represents the quantity to be updated |
 
-# TODO: Add docs for handling events, installation, etc.
+
+
+## Events
+
+```
+| Event name | Trigger |
+| ------------- | ---- |
+| update:quantity | Called when the quantity is changed (e.g., 1-9 is selected from the menu, Update button is clicked) |
+| remove:quantity | Called when the 0 is selected from the menu) |
+```
+
+## Developers
+
+Fork the project and enter the following commands:
+
+$```git clone https://github.com/YOUR_GITHUB_USERNAME/vue-select-quantity.git
+$```cd vue-select-quantity
+$```npm install``` # for dependencies
+$```npm run dev```
