@@ -2,7 +2,6 @@
   <div>
     <img alt="Vue logo" src="../assets/logo.png" />
     <h1>VueSelectQuantity - component for Vue 2</h1>
-    <div class="edit">Edit <code>components/Demo.vue</code> to test hot module replacement</div>
     <!-- src="https://placehold.co/500x200/39af73/FFF?font=Montserrat&text=Sample\nProduct" -->
     <img
       class="image"
