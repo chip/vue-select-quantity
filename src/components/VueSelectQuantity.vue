@@ -60,7 +60,8 @@ export default {
   props: {
     value: {
       required: true,
-      type: Number
+      type: Number,
+      default: 1
     }
   },
   directives: {
