@@ -13,7 +13,7 @@
           <VueSelectQuantity
             data-id="0"
             v-model="quantity"
-            @update:quantity="quantity = $event"
+            @update:quantity="update($event)"
             @remove:quantity="remove($event)"
           />
         </div>
@@ -25,6 +25,9 @@
         </div>
       </div>
     </div>
+    <div style="color: red; padding-top: 10px;">
+      {{ message }}
+    </div>
   </div>
 </template>
 
@@ -34,18 +37,21 @@ import VueSelectQuantity from './VueSelectQuantity.vue'
 import '../../public/style.scss'
 
 export default {
-  components: {
-    VueSelectQuantity
-  },
+  components: { VueSelectQuantity },
   data () {
     return {
       quantity: 1,
-      price: 100
+      price: 100,
+      message: ''
     }
   },
   methods: {
+    update (evt) {
+      this.quantity = evt
+      this.message = 'update event received, quantity: ' + evt
+    },
     remove (evt) {
-      console.log('remove', evt)
+      this.message = 'remove event received, quantity: ' + evt
     }
   }
 };

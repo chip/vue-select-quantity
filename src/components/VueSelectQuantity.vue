@@ -70,7 +70,7 @@ export default {
   data () {
     return {
       quantity: this.$props.value,
-      showInput: true, // false
+      showInput: false,
       showMenu: false,
       options: [
         { key: 0, label: '0 (Delete)' },
