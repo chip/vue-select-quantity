@@ -57,6 +57,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../public/colors";
 @import "../../public/demo";
 </style>
