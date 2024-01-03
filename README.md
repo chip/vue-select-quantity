@@ -2,6 +2,8 @@
 
 This Vue 2 component was created for easily specifying a quantity, as is the case in a shopping cart.
 
+
+
 ## DEMO
 
 [DEMO](https://www.github.com/chip/vue-select-quantity/Demo.vue)
@@ -79,7 +81,7 @@ export default {
 
 Fork the project and enter the following commands:
 
-$```git clone https://github.com/YOUR_GITHUB_USERNAME/vue-select-quantity.git```
-$```cd vue-select-quantity```
-$```npm install``` (for dependencies)
-$```npm run dev```
+    git clone https://github.com/YOUR_GITHUB_USERNAME/vue-select-quantity.git
+    cd vue-select-quantity
+    npm install (for dependencies)
+    npm run dev
