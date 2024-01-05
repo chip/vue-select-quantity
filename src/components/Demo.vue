@@ -57,5 +57,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "../../public/demo";
+@import "@assets/scss/demo.scss";
 </style>
