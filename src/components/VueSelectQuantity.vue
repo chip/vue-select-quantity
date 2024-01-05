@@ -101,13 +101,29 @@ export default {
         }
       }
     },
+    getDataId: function () {
+      let id = null
+      if (this.$attrs && this.$attrs['data-id']) {
+        id = this.$attrs['data-id']
+      }
+      return id
+    },
+    emitUpdate() {
+      const obj = {
+        id: this.getDataId(),
+        qty: Number(this.quantity)
+      }
+      this.$emit('update:quantity', obj)
+    },
+    emitRemove() {
+      const id = this.getDataId()
+      this.$emit('remove:quantity', id)
+    },
     select: function (evt) {
       //console.log(evt)
       this.showMenu = false
 
       let value = this.getDataItem(evt)
-      // console.log('value', value)
-      // console.log('quantity', this.quantity)
       if (!isNaN(value)) {
         this.quantity = parseInt(value)
       }
@@ -116,23 +132,15 @@ export default {
         // console.log('quantity === 10')
         this.showInput = true
       } else {
+        this.emitUpdate()
         if (this.quantity === 0) {
-          // console.log('quantity === 0')
-          let id = null
-          if (this.$attrs && this.$attrs['data-id']) {
-            id = this.$attrs['data-id']
-          }
-          this.$emit('update:quantity', this.quantity)
-          this.$emit('remove:quantity', id)
-        } else {
-          // console.log('else else', this.quantity)
-          this.$emit('update:quantity', this.quantity)
+          this.emitRemove()
         }
       }
     },
     update: function () {
       if (this.quantity) {
-        this.$emit('update:quantity', Number(this.quantity))
+        this.emitUpdate()
         this.showInput = false
         this.showMenu = false
       }
