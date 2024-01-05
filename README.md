@@ -14,7 +14,8 @@ $```npm install @chipcastle.com/vue-select-quantity```
 ## Quick start
 
 ```javascript
-import { VueSelectQuantity } from 'vue-select-quantity'
+import { VueSelectQuantity } from '@chipcastle.com/vue-select-quantity'
+import '@chipcastle.com/vue-select-quantity/dist/style.css'
 
 export default {
   components: {
