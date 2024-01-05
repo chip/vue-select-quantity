@@ -165,7 +165,8 @@ export default {
       if (option.key === 10) {
         selector.push('ten')
       }
-      return selector
+      const klass = selector.length > 0 ? selector.join(' ') : 'item'
+      return klass
     },
     nonNumeric: function (key) {
       return key.replace(/\D/g, '') === ''
