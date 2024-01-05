@@ -16,6 +16,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-debug": "DEBUG=* vite build --debug",
     "build:watch": "vite build --watch",
     "serve": "vite preview"
   },
