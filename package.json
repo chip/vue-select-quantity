@@ -53,7 +53,10 @@
     "cart",
     "quantity-picker"
   ],
-  "author": "Chip Castle chip@chipcastle.com",
+  "author": {
+    "name": "Chip Castle",
+    "url": "https://chipcastle.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/chip/vue-select-quantity/issues"
