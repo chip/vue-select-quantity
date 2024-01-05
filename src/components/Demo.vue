@@ -11,8 +11,8 @@
       <div class="container">
         <div class="component">
           <VueSelectQuantity
-            data-id="0"
-            v-model="quantity"
+            data-id="vsq-1"
+            :value="quantity"
             @update:quantity="update($event)"
             @remove:quantity="remove($event)"
           />
@@ -33,8 +33,7 @@
 
 <script>
 import VueSelectQuantity from './VueSelectQuantity.vue'
-// import '../../dist/style.scss'
-import '../../public/style.scss'
+// import '@dist/style.css'
 
 export default {
   components: { VueSelectQuantity },
@@ -47,11 +46,14 @@ export default {
   },
   methods: {
     update (evt) {
-      this.quantity = evt
-      this.message = 'update event received, quantity: ' + evt
+      const { id, qty } = evt
+      if (qty) {
+        this.quantity = qty
+      }
+      this.message = `update event received for id ${id} with quantity ${this.quantity}`
     },
-    remove (evt) {
-      this.message = 'remove event received, quantity: ' + evt
+    remove (id) {
+      this.message = `remove event received for id ${id}`
     }
   }
 };
