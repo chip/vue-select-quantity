@@ -2,7 +2,7 @@
 
 This Vue 2 component was created for easily specifying a quantity, as is the case in a shopping cart.
 
-https://github.com/chip/vue-select-quantity/blob/master/VueSelectQuantityDemo.mp4
+https://youtube.com/shorts/Mj2Qa9RlsOQ?feature=share
 
 ## How to install
 
