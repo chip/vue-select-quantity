@@ -209,6 +209,6 @@ export default {
   }
 }
 </script>
-<style scoped>
-@import "../../dist/style.css"
+<style lang="scss" scoped>
+@import "@assets/scss/global.scss"
 </style>

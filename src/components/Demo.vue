@@ -33,7 +33,6 @@
 
 <script>
 import VueSelectQuantity from './VueSelectQuantity.vue'
-// import '@dist/style.css'
 
 export default {
   components: { VueSelectQuantity },
