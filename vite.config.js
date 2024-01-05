@@ -23,5 +23,12 @@ export default defineConfig({
   },
   plugins: [
     createVuePlugin()
-  ]
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/assets/scss/global.scss";`
+      }
+    }
+  }
 });
