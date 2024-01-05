@@ -20,9 +20,6 @@ export default defineConfig({
     },
     minify: false
   },
-  plugins: [
-    createVuePlugin()
-  ],
   resolve: {
     alias: [
       { find: '@', replacement: path.resolve(__dirname, './src') },
@@ -30,11 +27,5 @@ export default defineConfig({
       { find: '@dist', replacement: path.resolve(__dirname, './dist') }
     ]
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "@/assets/scss/global.scss";`
-      }
-    }
-  }
+  plugins: [createVuePlugin()]
 });
