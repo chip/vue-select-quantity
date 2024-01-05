@@ -1,5 +1,5 @@
 {
-  "name": "vue-select-quantity",
+  "name": "@chipcastle.com/vue-select-quantity",
   "files": [
     "dist"
   ],
@@ -11,7 +11,7 @@
       "require": "./dist/vue-select-quantity.umd.js"
     }
   },
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": "true",
   "scripts": {
     "dev": "vite",
@@ -28,5 +28,34 @@
     "sass": "^1.69.5",
     "vite": "^2.0.5",
     "vite-plugin-vue2": "^2.0.1"
-  }
+  },
+  "description": "This Vue 2 component was created for easily specifying a quantity, as is the case in a shopping cart.",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/chip/vue-select-quantity.git"
+  },
+  "keywords": [
+    "javascript",
+    "vuejs",
+    "select",
+    "shopping-cart",
+    "component",
+    "vue",
+    "vuejs2",
+    "menu",
+    "vue2",
+    "shopping",
+    "component-library",
+    "cart",
+    "quantity",
+    "shoppingcart",
+    "cart",
+    "quantity-picker"
+  ],
+  "author": "Chip Castle chip@chipcastle.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chip/vue-select-quantity/issues"
+  },
+  "homepage": "https://github.com/chip/vue-select-quantity#readme"
 }
