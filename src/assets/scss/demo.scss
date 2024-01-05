@@ -1,8 +1,8 @@
-@import "colors";
+@use "helpers";
 
 img.image {
   margin-top: 20px;
-  border: .1rem solid $gray;
+  border: .1rem solid helpers.$gray;
 }
 
 .main {
@@ -10,14 +10,14 @@ img.image {
   justify-items: center;
 
   .container {
-    border: .1rem solid $gray;
+    border: .1rem solid helpers.$gray;
     display: grid;
 
     column-gap: 20px;
     grid-auto-rows: minmax(30px, auto);
     align-items: center;
     text-align: right;
-    background-color: $light-gray;
+    background-color: helpers.$light-gray;
 
     .price-label,
     .total-label {

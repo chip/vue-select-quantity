@@ -1,4 +1,5 @@
-@import "colors";
+@use "helpers";
+
 @mixin border-radius($top-left:10px, $top-right:null, $bottom-right:null, $bottom-left:null){
   -webkit-border-radius: $top-left $top-right $bottom-right $bottom-left;
      -moz-border-radius: $top-left $top-right $bottom-right $bottom-left;
@@ -9,7 +10,7 @@
 .vue-select-quantity {
   width: 12.0rem;
 
-  .select {
+  & .select {
     position: relative;
     top: -2.2rem;
     /* 1em equals 16px https://nekocalc.com/px-to-em-converter */
@@ -46,7 +47,7 @@
       max-height: 30rem;
       overflow-y: auto;
       overflow-x: hidden;
-      border: 0.1em solid $gray;
+      border: 0.1em solid helpers.$gray;
 
       @include border-radius(0.6em);
       box-shadow: 0 0.1em 0.2em rgb(0 0 0 / 30%);
@@ -61,7 +62,7 @@
         border: .1rem solid transparent;
 
         &:hover {
-          background-color: $light-gray;
+          background-color: helpers.$light-gray;
         }
 
         &:first-child {
@@ -69,16 +70,16 @@
 
           :hover {
             margin-top: .5rem;
-            background-color: $light-gray;
+            background-color: helpers.$light-gray;
           }
         }
         &.ten {
           margin-bottom: .5rem;
-          border-top-color: $gray;
+          border-top-color: helpers.$gray;
         }
         &.selected {
-          border-color: $blue-green;
-          background-color: $light-blue;
+          border-color: helpers.$blue-green;
+          background-color: helpers.$light-blue;
         }
 
         span.down-arrow {
@@ -100,19 +101,19 @@
         width: 4.0rem;
         box-sizing: border-box;
         padding: .3rem 1.0rem;
-        border: .1rem solid $gray;
+        border: .1rem solid helpers.$gray;
         @include border-radius(0.3rem);
         padding-left: .4rem;
 
         :focus {
-          outline: .2rem solid $sky-blue;
-          border: .1rem solid $dark-blue;
+          outline: .2rem solid helpers.$sky-blue;
+          border: .1rem solid helpers.$dark-blue;
         }
       }
 
       & a.update {
         font-size: 0.8rem;
-        background-color: $dark-yellow;
+        background-color: helpers.$dark-yellow;
         @include border-radius(0.6rem);
         font-weight: 600;
         padding: .3rem .4rem;
@@ -120,7 +121,7 @@
       }
 
       & a.update:hover {
-        background-color: $yellow;
+        background-color: helpers.$yellow;
       }
 
       & a.cancel {
