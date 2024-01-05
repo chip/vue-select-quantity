@@ -25,9 +25,7 @@
     "vue-template-compiler": "2.6.12"
   },
   "devDependencies": {
-    "lightningcss": "^1.22.1",
     "rollup-copy-transform-css": "^1.2.5",
-    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-scss": "^4.0.0",
     "sass": "^1.69.5",
     "vite": "^2.0.5",
