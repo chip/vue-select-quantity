@@ -18,7 +18,8 @@ export default defineConfig({
         }
       }
     },
-    watch: true
+    watch: true,
+    minify: false
   },
   plugins: [
     createVuePlugin()
