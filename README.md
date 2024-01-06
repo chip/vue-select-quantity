@@ -6,7 +6,9 @@ This Vue 2 component was created for easily specifying a quantity, as is the cas
 
 ## How to install
 
-$```npm install @chipcastle.com/vue-select-quantity```
+```bash
+npm install @chipcastle.com/vue-select-quantity
+```
 
 
 ## Quick start
