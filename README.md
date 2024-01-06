@@ -49,7 +49,7 @@ export default {
         if (qty) {
           this.quantity = qty
         }
-        console.log(`update event received for id ${id} with quantity ${this.quantity}`
+        console.log(`update event received for id ${id} with quantity ${this.quantity}`)
       },
       remove (id) {
         console.log(`remove event received for id ${id}`)
