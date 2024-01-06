@@ -6,10 +6,16 @@ This Vue 2 component was created for easily specifying a quantity, as is the cas
 
 ## How to install
 
+
+### NPM
 ```bash
 npm install @chipcastle.com/vue-select-quantity
 ```
 
+### PNPM
+```bash
+pnpm install @chipcastle.com/vue-select-quantity
+```
 
 ## Quick start
 
