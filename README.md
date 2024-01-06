@@ -17,19 +17,6 @@ npm install @chipcastle.com/vue-select-quantity
 pnpm install @chipcastle.com/vue-select-quantity
 ```
 
-## Quick start
-
-```javascript
-import { VueSelectQuantity } from '@chipcastle.com/vue-select-quantity'
-import '@chipcastle.com/vue-select-quantity/dist/style.css'
-
-export default {
-  components: {
-    VueSelectQuantity
-  }
-}
-```
-
 ## Basic Usage
 
 ```html
@@ -41,29 +28,32 @@ export default {
     @remove:quantity="remove($event)"
   />
 </template>
-```
-
-```javascript
 <script>
-  export default {
-    data () {
-      return {
-        quantity: 1
+import { VueSelectQuantity } from '@chipcastle.com/vue-select-quantity'
+import '@chipcastle.com/vue-select-quantity/dist/style.css'
+
+export default {
+  components: {
+    VueSelectQuantity
+  },
+  data () {
+    return {
+      quantity: 1
+    }
+  },
+  methods: {
+    update (evt) {
+      const { id, qty } = evt
+      if (qty) {
+        this.quantity = qty
       }
+      console.log(`update event received for id ${id} with quantity ${this.quantity}`)
     },
-    methods: {
-      update (evt) {
-        const { id, qty } = evt
-        if (qty) {
-          this.quantity = qty
-        }
-        console.log(`update event received for id ${id} with quantity ${this.quantity}`)
-      },
-      remove (id) {
-        console.log(`remove event received for id ${id}`)
-      }
+    remove (id) {
+      console.log(`remove event received for id ${id}`)
     }
   }
+}
 </script>
 ```
 
