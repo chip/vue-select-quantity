@@ -27,8 +27,8 @@ export default {
 ```html
 <template>
   <VueSelectQuantity
-    data-id="id"
-    v-model="quantity"
+    :value="quantity"
+    data-id="vsq-1"
     @update:quantity="update($event)"
     @remove:quantity="remove($event)"
   />
@@ -40,17 +40,19 @@ export default {
   export default {
     data () {
       return {
-        id: '1',
         quantity: 1
       }
     },
     methods: {
       update (evt) {
-        console.log('received update:quantity event', evt)
-        this.quantity = evt
+        const { id, qty } = evt
+        if (qty) {
+          this.quantity = qty
+        }
+        console.log(`update event received for id ${id} with quantity ${this.quantity}`
       },
-      remove (evt) {
-        console.log('received remove:quantity event', evt)
+      remove (id) {
+        console.log(`remove event received for id ${id}`)
       }
     }
   }
@@ -61,14 +63,14 @@ export default {
 
 | Property name | Type | Default | Description |
 | ------------- | ---- | ------- | ----------- |
-| data-id | String | null | A required property to identify the component instance |
 | v-model | Number | null | A required property which represents the quantity to be updated |
+| data-id | String | null | A data property to identify the component instance |
 
 ## Events
 
 | Event name | Trigger |
 | ------------- | ---- |
-| update:quantity | Called when the quantity is changed (e.g., 1-9 is selected from the menu, Update button is clicked) |
+| update:quantity | Called when the quantity is changed (e.g., 1-9 is selected from the menu, Update button is clicked). Event object sent includes `id` and `qty` properties.|
 | remove:quantity | Called when the 0 is selected from the menu) |
 
 ## Developers
