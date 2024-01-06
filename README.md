@@ -30,9 +30,10 @@ pnpm install @chipcastle.com/vue-select-quantity
 </template>
 <script>
 import { VueSelectQuantity } from '@chipcastle.com/vue-select-quantity'
-import '@chipcastle.com/vue-select-quantity/dist/style.css'
+import '../node_modules/@chipcastle.com/vue-select-quantity/dist/style.css'
 
 export default {
+  name: 'App',
   components: {
     VueSelectQuantity
   },
