@@ -19,6 +19,8 @@ pnpm install @chipcastle.com/vue-select-quantity
 
 ## Basic Usage
 
+### src/App.vue
+
 ```html
 <template>
   <VueSelectQuantity
